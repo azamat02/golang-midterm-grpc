@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package greet;
+
+option go_package="api/proto;servicepb";
+
+message Number {
+  int64 number = 1;
+}
+
+message NumRequest {
+  Number number = 1;
+}
+
+message NumResponse {
+  float result = 1;
+}
+
+
+service GreetService{
+  //Client streaming rpc
+  rpc LongGreet(stream NumRequest) returns (NumResponse) {};
+}
